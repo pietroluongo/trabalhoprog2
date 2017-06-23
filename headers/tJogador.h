@@ -5,8 +5,8 @@
  * Tipo tCartela
  */
 
-#ifndef TCARTELA_H
-#define TCARTELA_H
+#ifndef TJOGADOR_H
+#define TJOGADOR_H
 
 #include "tCartela.h"
 
@@ -16,7 +16,7 @@ typedef struct
     int qtdCartelas;
     tCartela cartelas[20];
     
-} tJogador;
+}tJogador;
 
 //Cria um jogador baseado nos argumentos passados
 tJogador CriaJogador(char* nome, int qtd);

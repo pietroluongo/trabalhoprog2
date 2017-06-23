@@ -9,7 +9,6 @@
 #define TCARTELA_H
 
 #include "tGeradorAle.h"
-#include "tJogador.h"
 
 typedef struct
 {
@@ -21,10 +20,10 @@ typedef struct
 } tCartela;
 
 //Cria uma cartela baseada nas entradas de parâmetro da função
-tCartela CriaCartela(int lin, int col, int id, tJogador jogador);
+tCartela CriaCartela(int lin, int col, int id);
 
 //Printa a cartela
-void PrintaCartela(tCartela cartela, tJogador jogador);
+void PrintaCartela(tCartela cartela);
 
 //Checa os números da cartela; Se algum foi sorteado na rodada, substitui por ---
 void ChecaCartela(tCartela cartela);

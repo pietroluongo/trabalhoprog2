@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*
  * TODO: Criar tipo tCartela;
@@ -21,6 +22,24 @@ int main(int argc, char** argv)
      * printf("ERRO: O diretorio de arquivos de configuracao nao foi informado!");
      * Nesse planejamento, esse caminho será chamado de $PATH
     */
+    if(argc == 1)
+    {
+        printf("ERRO: O diretorio de arquivos de configuracao nao foi informado!");
+        return (EXIT_FAILURE);
+    }
+    FILE* config;
+    config = fopen(argv[1], "r");
+    //Seed da geração de números
+    int seed;
+    //Quantidade de pedras a serem sorteadas pela banca - MAX: 900
+    int qtdPedras;
+    //Quantidade de linhas da cartela - MAX: 20
+    int lin;
+    //Quantidade de colunas da cartela - MAX: 20
+    int col;
+    //Quantidade de participantes do jogo - MAX: 20
+    int qJog;
+    fscanf(config, "%d;%d;%d;%d;%d", &seed, &qtdPedras, &lin, &col, &qJog);
     
     //PARTE II: CRIAÇÃO DO JOGO
     /*
@@ -50,7 +69,7 @@ int main(int argc, char** argv)
      * 
      * Cada jogador terá NO MÁXIMO 10 CARTELAS
      */
-    
+
     //PARTE III: REALIZAÇÃO DO JOGO
     /*
      * Reiniciar Gerador -> Sortear pedra -> Marcar as pedras que foram 

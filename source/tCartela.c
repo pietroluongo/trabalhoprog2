@@ -1,6 +1,6 @@
 #include "../headers/tCartela.h"
 
-tCartela CriaCartela(int lin, int col)
+tCartela CriaCartela(int lin, int col, int id)
 {
     //TODO
     /* A cartela deve ser preenchida de cima para baixo, da esquerda para a
