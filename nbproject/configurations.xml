@@ -4,18 +4,12 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Arquivos de Cabeçalho"
                    projectFiles="true">
-      <itemPath>headers/tCartela.h</itemPath>
-      <itemPath>headers/tGeradorAle.h</itemPath>
-      <itemPath>headers/tJogador.h</itemPath>
       <itemPath>headers/utility.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Arquivos de Código-Fonte"
                    projectFiles="true">
       <itemPath>source/main.c</itemPath>
-      <itemPath>source/tCartela.c</itemPath>
-      <itemPath>source/tGeradorAle.c</itemPath>
-      <itemPath>source/tJogador.c</itemPath>
       <itemPath>source/utility.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -44,21 +38,9 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="headers/tCartela.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="headers/tGeradorAle.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="headers/tJogador.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="headers/utility.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/main.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="source/tCartela.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="source/tGeradorAle.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="source/tJogador.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="source/utility.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -83,21 +65,9 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="headers/tCartela.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="headers/tGeradorAle.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="headers/tJogador.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="headers/utility.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/main.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="source/tCartela.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="source/tGeradorAle.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="source/tJogador.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="source/utility.c" ex="false" tool="0" flavor2="0">
       </item>

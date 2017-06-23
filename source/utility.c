@@ -1,29 +1,26 @@
 #include "../headers/utility.h"
 
-void GetFile(char* PATH, FILE* input)
+int ChecaParam(int arg)
 {
-    input = fopen(PATH, "r");
+    return arg == 2;
 }
 
-void CriaJogadores(int qtd, tJogador* players, FILE* config)
+void Erro(char* msg)
 {
-    int i;
-    for(i = 0; i<qtd; i++)
-    {
-        char nome[99];
-        int qtd;
-        fscanf(config, "[^;]%s", &nome);
-        fscanf(config, "%d", &qtd);
-        fscanf(config, "%*[\n]");
-        players[i] = CriaJogador(nome, qtd);
-    }
+    printf(msg);
+}
+
+FILE* GetFile(char* PATH, FILE* input)
+{
+    input = fopen(PATH, READ);
+}
+
+void CloseFile(FILE* file)
+{
+    fclose(file);
 }
 
 void ReadConfig(int *seed, int *qtdPedras, int *lin, int *col, int *qJog, FILE* input)
 {
-    fscanf(input, "%d", &seed);
-    fscanf(input, "%d", &qtdPedras);
-    fscanf(input, "%d", &lin);
-    fscanf(input, "%d", &col);
-    fscanf(input, "%d", &qJog);
+    fscanf(input, "%d;%d;%d;%d;%d", &seed, &qtdPedras, &lin, &col, &qJog);
 }

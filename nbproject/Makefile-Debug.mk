@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux
-CND_DLIB_EXT=so
+CND_PLATFORM=Cygwin-Windows
+CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -36,9 +36,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/source/main.o \
-	${OBJECTDIR}/source/tCartela.o \
-	${OBJECTDIR}/source/tGeradorAle.o \
-	${OBJECTDIR}/source/tJogador.o \
 	${OBJECTDIR}/source/utility.o
 
 
@@ -60,31 +57,16 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2-dev
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2-dev: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2-dev ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/source/main.o: source/main.c
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/main.o source/main.c
-
-${OBJECTDIR}/source/tCartela.o: source/tCartela.c
-	${MKDIR} -p ${OBJECTDIR}/source
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tCartela.o source/tCartela.c
-
-${OBJECTDIR}/source/tGeradorAle.o: source/tGeradorAle.c
-	${MKDIR} -p ${OBJECTDIR}/source
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tGeradorAle.o source/tGeradorAle.c
-
-${OBJECTDIR}/source/tJogador.o: source/tJogador.c
-	${MKDIR} -p ${OBJECTDIR}/source
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tJogador.o source/tJogador.c
 
 ${OBJECTDIR}/source/utility.o: source/utility.c
 	${MKDIR} -p ${OBJECTDIR}/source
