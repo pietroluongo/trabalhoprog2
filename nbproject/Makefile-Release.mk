@@ -36,6 +36,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/source/main.o \
+	${OBJECTDIR}/source/tCartela.o \
+	${OBJECTDIR}/source/tGeradorAle.o \
+	${OBJECTDIR}/source/tJogador.o \
 	${OBJECTDIR}/source/utility.o
 
 
@@ -67,6 +70,21 @@ ${OBJECTDIR}/source/main.o: source/main.c
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/main.o source/main.c
+
+${OBJECTDIR}/source/tCartela.o: source/tCartela.c
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tCartela.o source/tCartela.c
+
+${OBJECTDIR}/source/tGeradorAle.o: source/tGeradorAle.c
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tGeradorAle.o source/tGeradorAle.c
+
+${OBJECTDIR}/source/tJogador.o: source/tJogador.c
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tJogador.o source/tJogador.c
 
 ${OBJECTDIR}/source/utility.o: source/utility.c
 	${MKDIR} -p ${OBJECTDIR}/source

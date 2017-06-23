@@ -24,3 +24,12 @@ void ReadConfig(int *seed, int *qtdPedras, int *lin, int *col, int *qJog, FILE* 
 {
     fscanf(input, "%d;%d;%d;%d;%d", &seed, &qtdPedras, &lin, &col, &qJog);
 }
+
+void CopiaStr(char* A, char* B)
+{
+    int i = 0;
+    while(A[i] != '\0')
+    {
+        B[i] = A[i];
+    }
+}

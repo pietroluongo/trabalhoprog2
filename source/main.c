@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../headers/utility.h"
+#include "../headers/tCartela.h"
+#include "../headers/tJogador.h"
 
 /*
  * 
@@ -29,6 +31,8 @@ int main(int argc, char** argv)
     int col;
     //Quantidade de participantes do jogo - MAX: 20
     int qJog;
+    //Total de cartelas do jogo
+    int totalCartelas;
     
     //Referência ao arquivo de configuração
     FILE* config;
@@ -45,7 +49,21 @@ int main(int argc, char** argv)
     
     //Lê as configurações de jogo do arquivo
     ReadConfig(&seed, &qtdPedras, &lin, &col, &qJog, config);
-
+    
+    //Vetor com informações dos participantes
+    tJogador jogadores[qJog];
+    
+    //Lê o nome dos participantes e quantas cartelas cada um tem
+    LeParticipantes(qJog, config, jogadores, &totalCartelas);
+    
+    //Cria um vetor que contém todas as cartelas do jogo
+    tCartela cartelas[totalCartelas];
+    
+    //Monta as cartelas dos participantes
+    MontaCartelas(qJog, jogadores, cartelas, lin, col);
+    
+    //Fecha o arquivo
+    CloseFile(config);
     
     return (EXIT_SUCCESS);
 }
