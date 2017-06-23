@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=Cygwin-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=GNU-Linux
+CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -38,7 +38,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/main.o \
 	${OBJECTDIR}/source/tCartela.o \
 	${OBJECTDIR}/source/tGeradorAle.o \
-	${OBJECTDIR}/source/tJogador.o
+	${OBJECTDIR}/source/tJogador.o \
+	${OBJECTDIR}/source/utility.o
 
 
 # C Compiler Flags
@@ -59,11 +60,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2-dev
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2-dev: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2 ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2-dev ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/source/main.o: source/main.c
 	${MKDIR} -p ${OBJECTDIR}/source
@@ -84,6 +85,11 @@ ${OBJECTDIR}/source/tJogador.o: source/tJogador.c
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tJogador.o source/tJogador.c
+
+${OBJECTDIR}/source/utility.o: source/utility.c
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/utility.o source/utility.c
 
 # Subprojects
 .build-subprojects:

@@ -7,13 +7,13 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=Cygwin-Windows
-CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=trabalhoprog2
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/trabalhoprog2
-CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=trabalhoprog2.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/trabalhoprog2.tar
+CND_PLATFORM_Debug=GNU-Linux
+CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
+CND_ARTIFACT_NAME_Debug=trabalhoprog2-dev
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/trabalhoprog2-dev
+CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
+CND_PACKAGE_NAME_Debug=trabalhoprog2-dev.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/trabalhoprog2-dev.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
