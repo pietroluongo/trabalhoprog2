@@ -8,19 +8,24 @@
 #ifndef TCARTELA_H
 #define TCARTELA_H
 
-#include "tGeradorAle.h"
+#include "tCartela.h"
 
 typedef struct
 {
-    int id;
-    int lin;
-    int col;
-    int nums[20][20];
-} tCartela;
+    char nome[99];
+    int qtdCartelas;
+    tCartela cartelas[20];
+    
+} tJogador;
 
-tCartela CriaCartela(int lin, int col);
+//Cria um jogador baseado nos argumentos passados
+tJogador CriaJogador(char* nome, int qtd);
 
-void PrintaCartela(tCartela cartela);
+//Cria um jogador lendo as informações da entrada padrão
+tJogador CriaJogadorR();
+
+//Imprime as informações de dado jogador
+void PrintaJogador(tJogador jogador);
 
 #endif /* TCARTELA_H */
 

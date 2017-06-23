@@ -1,11 +1,17 @@
-#include "../headers/tCartela.h"
+#include "../headers/tJogador.h"
 
-tCartela CriaCartela(int lin, int col)
+
+tJogador CriaJogador(char* nome, int qtd)
 {
     //TODO
 }
 
-void PrintaCartela(tCartela cartela)
+tJogador CriaJogadorR()
+{
+    //TODO
+}
+
+void PrintaJogador(tJogador jogador)
 {
     //TODO
 }

@@ -51,6 +51,13 @@ int main(int argc, char** argv)
      * Cada jogador terá NO MÁXIMO 10 CARTELAS
      */
     
+    //PARTE III: REALIZAÇÃO DO JOGO
+    /*
+     * Reiniciar Gerador -> Sortear pedra -> Marcar as pedras que foram 
+     * sorteadas nas cartelas (reimprimir as cartelas a cada jogada)
+     * 
+     * Fim do jogo: alguém completar a cartela ou acabarem as pedras
+     */
     
     return (EXIT_SUCCESS);
 }
