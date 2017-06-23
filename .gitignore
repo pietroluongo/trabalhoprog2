@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# PDF Files
+*.pdf
+
+# Test Files
+test_*
