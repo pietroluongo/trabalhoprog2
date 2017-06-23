@@ -15,8 +15,7 @@ typedef struct
     int id;
     int lin;
     int col;
-    int nums[lin][col];
-    
+    int nums[20][20];
 } tCartela;
 
 tCartela CriaCartela(int lin, int col);
