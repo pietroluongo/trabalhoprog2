@@ -1,31 +1,26 @@
 /* 
- * File:   tCartela.h
+ * File:   tJogador.h
  * Author: Gabriel Pietroluongo Nascimento
  *
- * Tipo tCartela
+ * Tipo tJogador usado no bingo
  */
 
-#ifndef TCARTELA_H
-#define TCARTELA_H
-
-#include "tCartela.h"
+#ifndef JOGADOR_H
+#define JOGADOR_H
+#include "utility.h"
 
 typedef struct
 {
+    int id;
     char nome[99];
     int qtdCartelas;
-    tCartela cartelas[20];
-    
+    int cartelaIds[10];
 } tJogador;
 
-//Cria um jogador baseado nos argumentos passados
-tJogador CriaJogador(char* nome, int qtd);
+tJogador InitJogador(char* name, int qtd, int id);
 
-//Cria um jogador lendo as informações da entrada padrão
-tJogador CriaJogadorR();
+void LeParticipantes(int qJog, FILE* config, tJogador* out, int* totalCartelas);
 
-//Imprime as informações de dado jogador
-void PrintaJogador(tJogador jogador);
 
-#endif /* TCARTELA_H */
+#endif /* UTILITY_H */
 

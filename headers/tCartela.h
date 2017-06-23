@@ -2,38 +2,41 @@
  * File:   tCartela.h
  * Author: Gabriel Pietroluongo Nascimento
  *
- * Tipo tCartela
+ * Tipo Cartela - Gerenciamento das cartelas do bingo
  */
 
-#ifndef TCARTELA_H
-#define TCARTELA_H
-
+#ifndef CARTELA_H
+#define CARTELA_H
 #include "tGeradorAle.h"
-#include "tJogador.h"
+#include "utility.h"
 
 typedef struct
 {
     int id;
     int lin;
     int col;
-    int marcados;
-    int nums[20][20];
+    int numeros[20][20];
+    int numerosMarcados;
 } tCartela;
 
-//Cria uma cartela baseada nas entradas de parâmetro da função
-tCartela CriaCartela(int lin, int col, int id, tJogador jogador);
+//Inicializa a cartela
+tCartela initCartela(int id, int lin, int col);
 
-//Printa a cartela
-void PrintaCartela(tCartela cartela, tJogador jogador);
+//Checa se algum numero da cartela foi sorteado na rodada
+void ChecaCartela(tCartela* cartela, int num);
 
-//Checa os números da cartela; Se algum foi sorteado na rodada, substitui por ---
-void ChecaCartela(tCartela cartela);
+//Printa as informações da cartela
+void PrintaCartela(tCartela* cartela);
 
-//Retorna a ID da cartela
-int getID(tCartela cartela);
+//Retorna o id da cartela
+int GetIdC(tCartela cartela);
 
 //Retorna a quantidade de números marcados na cartela
-int getHits(tCartela cartela);
+int getHitsC(tCartela cartela);
 
-#endif /* TCARTELA_H */
+//Monta as cartelas dos jogadores
+void MontaCartelas(int size, tJogador* jogadores, tCartela* cartelas, int lin, int col);
+
+
+#endif /* UTILITY_H */
 

@@ -1,17 +1,26 @@
 #include "../headers/tJogador.h"
 
-
-tJogador CriaJogador(char* nome, int qtd)
+tJogador InitJogador(char* name, int qtd, int id)
 {
-    //TODO
+    tJogador j;
+    j.id = id;
+    CopiaStr(name, j.nome);
+    j.qtdCartelas = qtd;
+    return j;
 }
 
-tJogador CriaJogadorR()
-{
-    //TODO
-}
 
-void PrintaJogador(tJogador jogador)
+void LeParticipantes(int qJog, FILE* config, tJogador* out, int* totalCartelas)
 {
-    //TODO
+    int i;
+    for(i = 0; i < qJog; i++)
+    {
+        char nome[99];
+        int qCartelas;
+        fscanf(config, "%98s[^;]", &nome);
+        fscanf(config, "%d", &qCartelas);
+        fscanf(config, "%*[^\n]");
+        out[i] = InitJogador(nome, qCartelas, i);
+        totalCartelas += qCartelas;
+    }
 }

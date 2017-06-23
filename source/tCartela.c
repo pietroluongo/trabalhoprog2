@@ -1,26 +1,68 @@
 #include "../headers/tCartela.h"
 
-tCartela CriaCartela(int lin, int col)
+tCartela InitCartela(int id, int lin, int col)
 {
-    //TODO
-    /* A cartela deve ser preenchida de cima para baixo, da esquerda para a
-     * direita. 
-     */
+    ReiniciaGerador(id, lin*col);
+    tCartela r;
+    r.id = id;
+    r.lin = lin;
+    r.col = col;
+    memset(r.numeros, 0, sizeof r.numeros);
+    int i, j;
+    for(i = 0; i < col; i++)
+    {
+        for(j = 0; j < lin; j++)
+        {
+            r.numeros[i][j] = GeraProxNumero();
+        }
+    }
+    return r;
 }
 
-void PrintaCartela(tCartela cartela)
+void ChecaCartela(tCartela* cartela, int num)
+{
+    int i, j;
+    for(i = 0; i < cartela->col; i++)
+    {
+        for(j = 0; j < cartela->lin; j++)
+        {
+            if(cartela->numeros[i][j] == num)
+            {
+                cartela->numerosMarcados++;
+                cartela->numeros[i][j] = -1;
+            }
+        }
+    }
+}
+
+void PrintaCartela(tCartela* cartela)
 {
     //TODO
-    
-    /* A cartela deve ser impressa assim:
-    Jogador:Nome do jogador
-    Cartela ID:0
-    |001|020|035|057|072|
-    |002|021|036|059|077|
-    |003|022|044|068|080|
-    |005|027|045|069|082|
-    |013|029|050|070|089|
-    |014|031|054|071|090|
-     * As linhas da cartela devem ser impressas com um \t antes (tabulação)
-     */
+}
+
+int GetIdC(tCartela cartela)
+{
+    return cartela.id;
+}
+
+int getHitsC(tCartela cartela)
+{
+    return cartela.numerosMarcados;
+}
+
+void MontaCartelas(int size, tJogador* jogadores, tCartela* cartelas, int lin, int col)
+{
+    int k = 0;
+    int i;
+    for(i = 0; i<size; i++)
+    {
+        int j;
+        for(j = 0; j < jogadores[i].qtdCartelas; j++)
+        {
+            tCartela c = InitCartela(jogadores[i].id, lin, col);
+            jogadores[i].cartelaIds[j] = k;
+            cartelas[k] = c;
+            k++;
+        }
+    }
 }

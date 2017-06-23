@@ -38,7 +38,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/main.o \
 	${OBJECTDIR}/source/tCartela.o \
 	${OBJECTDIR}/source/tGeradorAle.o \
-	${OBJECTDIR}/source/tJogador.o
+	${OBJECTDIR}/source/tJogador.o \
+	${OBJECTDIR}/source/utility.o
 
 
 # C Compiler Flags
@@ -84,6 +85,11 @@ ${OBJECTDIR}/source/tJogador.o: source/tJogador.c
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tJogador.o source/tJogador.c
+
+${OBJECTDIR}/source/utility.o: source/utility.c
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/utility.o source/utility.c
 
 # Subprojects
 .build-subprojects:
