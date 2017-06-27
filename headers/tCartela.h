@@ -7,7 +7,7 @@
 
 #ifndef CARTELA_H
 #define CARTELA_H
-#include "../source/tGeradorAle.h"
+#include "tGeradorAle.h"
 #include "utility.h"
 
 typedef struct
@@ -20,7 +20,7 @@ typedef struct
 } tCartela;
 
 //Inicializa a cartela
-tCartela initCartela(int id, int lin, int col, int qtdPedras);
+tCartela initCartela(int id, int lin, int col);
 
 //Checa se algum numero da cartela foi sorteado na rodada
 void ChecaCartela(tCartela* cartela, int num);
@@ -35,7 +35,7 @@ int GetIdC(tCartela cartela);
 int getHitsC(tCartela cartela);
 
 //Monta as cartelas dos jogadores
-void MontaCartelas(int size, tJogador* jogadores, tCartela* cartelas, int lin, int col, int seed);
+void MontaCartelas(int size, tJogador* jogadores, tCartela* cartelas, int lin, int col);
 
 
 #endif /* UTILITY_H */
