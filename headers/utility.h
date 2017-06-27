@@ -36,5 +36,7 @@ void ReadConfig(int *seed, int *qtdPedras, int *lin, int *col, int *qJog, FILE* 
 //Copia uma string para outra
 void CopiaStr(char* A, char* B);
 
+void AppendString(char* from, char* to);
+
 #endif /* UTILITY_H */
 

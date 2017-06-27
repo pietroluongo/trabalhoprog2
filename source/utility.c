@@ -33,3 +33,12 @@ void CopiaStr(char* A, char* B)
         B[i] = A[i];
     }
 }
+void AppendString(char* from, char* to)
+{
+    int l = strlen(to);
+    int i;
+    for(i = 0; i < strlen(from); i++)
+    {
+        to[l + i] = from[i];
+    }
+}
