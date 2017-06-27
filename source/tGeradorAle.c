@@ -1,4 +1,4 @@
-#include "../headers/tGeradorAle.h"
+#include "tGeradorAle.h"
 #include <stdio.h>
 #include <stdlib.h>
 

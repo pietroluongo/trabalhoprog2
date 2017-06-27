@@ -10,17 +10,18 @@ tJogador InitJogador(char* name, int qtd, int id)
 }
 
 
-void LeParticipantes(int qJog, FILE* config, tJogador* out, int* totalCartelas)
+void LeParticipantes(int qJog, tJogador* out, int* totalCartelas)
 {
     int i;
     for(i = 0; i < qJog; i++)
     {
         char nome[99];
         int qCartelas;
-        fscanf(config, "%98s[^;]", &nome);
-        fscanf(config, "%d", &qCartelas);
-        fscanf(config, "%*[^\n]");
+        scanf("\n%98[^;]", nome);
+        scanf("%*[;]");
+        scanf("%d", &qCartelas);
+        scanf("%*[^\n]");
         out[i] = InitJogador(nome, qCartelas, i);
-        totalCartelas += qCartelas;
+        *totalCartelas += qCartelas;
     }
 }
