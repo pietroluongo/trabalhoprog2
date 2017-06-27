@@ -19,7 +19,7 @@ typedef struct
 
 tJogador InitJogador(char* name, int qtd, int id);
 
-void LeParticipantes(int qJog, FILE* config, tJogador* out, int* totalCartelas);
+void LeParticipantes(int qJog, tJogador* out, int* totalCartelas);
 
 
 #endif /* UTILITY_H */

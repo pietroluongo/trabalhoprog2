@@ -7,7 +7,7 @@ int ChecaParam(int arg)
 
 void Erro(char* msg)
 {
-    printf(msg);
+    //printf(msg);
 }
 
 FILE* GetFile(char* PATH, FILE* input)
@@ -20,9 +20,14 @@ void CloseFile(FILE* file)
     fclose(file);
 }
 
-void ReadConfig(int *seed, int *qtdPedras, int *lin, int *col, int *qJog, FILE* input)
+void ReadConfig(/*FILE* input*/ tConfig* cfg)
 {
-    fscanf(input, "%d;%d;%d;%d;%d", &seed, &qtdPedras, &lin, &col, &qJog);
+    //fscanf(input, "%d;%d;%d;%d;%d", seed, qtdPedras, lin, col, qJog);
+    scanf("%d;", &cfg->seed);
+    scanf("%d;", &cfg->qtdPedras);
+    scanf("%d;", &cfg->lin);
+    scanf("%d;", &cfg->col);
+    scanf("%d", &cfg->qJog);
 }
 
 void CopiaStr(char* A, char* B)
@@ -31,6 +36,7 @@ void CopiaStr(char* A, char* B)
     while(A[i] != '\0')
     {
         B[i] = A[i];
+        i++;
     }
 }
 void AppendString(char* from, char* to)
@@ -41,4 +47,51 @@ void AppendString(char* from, char* to)
     {
         to[l + i] = from[i];
     }
+}
+
+void OrdenaVetor(int* vet, int size)
+{
+    int i, j, aux;
+    for(i = 0; i < size; i++)
+    {
+        for(j = 0; j < size; j++)
+        {
+            if(vet[i] < vet[j])
+            {
+                aux = vet[i];
+                vet[i] = vet[j];
+                vet[j] = aux;
+            }
+        }
+    }
+}
+
+int getConfSeed(tConfig* config)
+{
+    return config->seed;
+}
+
+int getConfPedras(tConfig* config)
+{
+    return config->qtdPedras;
+}
+
+int getConfLin(tConfig* config)
+{
+    return config->lin;
+}
+
+int getConfCol(tConfig* config)
+{
+    return config->col;
+}
+
+int getConfqJog(tConfig* config)
+{
+    return config->qJog;
+}
+
+int getConfTotalCartelas(tConfig* config)
+{
+    return config->totalCartelas;
 }
