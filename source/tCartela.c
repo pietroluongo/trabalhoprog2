@@ -28,7 +28,7 @@ tCartela InitCartela(int id, int lin, int col, int qtdPedras)
     return r;
 }
 
-void ChecaCartela(tCartela* cartela, int num)
+int ChecaCartela(tCartela* cartela, int num)
 {
     int i, j;
     for(i = 0; i < cartela->col; i++)
@@ -42,6 +42,9 @@ void ChecaCartela(tCartela* cartela, int num)
             }
         }
     }
+    if(cartela->numerosMarcados == cartela->col * cartela->lin)
+        return 1;
+    return 0;
 }
 
 void PrintaCartela(tCartela* cartela)
@@ -51,18 +54,32 @@ void PrintaCartela(tCartela* cartela)
     {
         int num = cartela->numeros[i][j];
         printf("\t|");
-        if(num < 10)
+        if(num < 10 && num > 0)
+        {
             printf("00");
-        else
+            printf("%d|", cartela->numeros[i][0]);
+        }
+        else if (num > 10)
+        {
             printf("0");
-        printf("%d|", cartela->numeros[i][0]);
+            printf("%d|", cartela->numeros[i][0]);
+        }
+        else
+        {
+            printf("---");
+        }
         for(j = 1; j < cartela->lin-1; j++)
         {
             int num = cartela->numeros[i][j];
-            if(num < 10)
+            if(num < 10 && num > 0)
                 printf("00");
-            else
+            else if(num > 10)
                 printf("0");
+            else
+            {
+                printf("---|");
+                continue;
+            }
             printf("%d|", num);
         }
         printf("\n");

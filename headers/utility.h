@@ -45,6 +45,8 @@ int getConfqJog(tConfig* config);
 
 int getConfTotalCartelas(tConfig* config);
 
+int setConfTotalCartelas(tConfig* config, int n);
+
 //Checa se o programa foi inicializado com os parâmetros corretos
 int ChecaParam(int arg);
 

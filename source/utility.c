@@ -95,3 +95,8 @@ int getConfTotalCartelas(tConfig* config)
 {
     return config->totalCartelas;
 }
+
+int setConfTotalCartelas(tConfig* config, int n)
+{
+    config->totalCartelas = n;
+}

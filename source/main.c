@@ -10,7 +10,7 @@
 #include "../headers/utility.h"
 #include "../headers/tCartela.h"
 #include "../headers/tJogador.h"
-
+#include "../headers/bingo.h"
 /*
  * 
  */
@@ -31,14 +31,16 @@ int main(int argc, char** argv)
     //Lê o nome dos participantes e quantas cartelas cada um tem
     LeParticipantes(getConfqJog(&config), jogadores, &totalCartelas);
     
+    //Salva o total de cartelas para o struct de configurações
+    setConfTotalCartelas(&config, totalCartelas);
+    
     //Cria um vetor que contém todas as cartelas do jogo
     tCartela cartelas[totalCartelas];
     
     //Monta as cartelas dos participantes
     MontaCartelas(jogadores, cartelas, &config);
  
-    PrintaCartela(&cartelas[0]);
-    
+    IniciaJogo(cartelas, jogadores, &config);
     return (EXIT_SUCCESS);
 }
 

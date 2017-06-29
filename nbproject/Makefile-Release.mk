@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/source/bingo.o \
 	${OBJECTDIR}/source/main.o \
 	${OBJECTDIR}/source/tCartela.o \
 	${OBJECTDIR}/source/tGeradorAle.o \
@@ -65,6 +66,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2 ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/source/bingo.o: source/bingo.c 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/bingo.o source/bingo.c
 
 ${OBJECTDIR}/source/main.o: source/main.c 
 	${MKDIR} -p ${OBJECTDIR}/source

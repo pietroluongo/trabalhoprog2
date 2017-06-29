@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Arquivos de Cabeçalho"
                    projectFiles="true">
+      <itemPath>headers/bingo.h</itemPath>
       <itemPath>headers/tCartela.h</itemPath>
       <itemPath>source/tGeradorAle.h</itemPath>
       <itemPath>headers/tJogador.h</itemPath>
@@ -12,6 +13,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Arquivos de Código-Fonte"
                    projectFiles="true">
+      <itemPath>source/bingo.c</itemPath>
       <itemPath>source/main.c</itemPath>
       <itemPath>source/tCartela.c</itemPath>
       <itemPath>source/tGeradorAle.c</itemPath>
@@ -44,11 +46,15 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="headers/bingo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="headers/tCartela.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="headers/tJogador.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="headers/utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/bingo.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="source/main.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -83,11 +89,15 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="headers/bingo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="headers/tCartela.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="headers/tJogador.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="headers/utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/bingo.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="source/main.c" ex="false" tool="0" flavor2="0">
       </item>

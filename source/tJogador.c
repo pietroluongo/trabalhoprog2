@@ -25,3 +25,17 @@ void LeParticipantes(int qJog, tJogador* out, int* totalCartelas)
         *totalCartelas += qCartelas;
     }
 }
+
+int getQtdCartelasDoJogador(tJogador* jog)
+{
+    return jog->qtdCartelas;
+}
+
+void getIdsCartelasDoJogador(tJogador* jog, int* ids)
+{
+    int i;
+    for(i = 0; i < jog->qtdCartelas; i++)
+    {
+        ids[i] = jog->cartelaIds[i];
+    }
+}

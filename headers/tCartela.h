@@ -22,8 +22,9 @@ typedef struct
 //Inicializa a cartela
 tCartela initCartela(int id, int lin, int col, int qtdPedras);
 
-//Checa se algum numero da cartela foi sorteado na rodada
-void ChecaCartela(tCartela* cartela, int num);
+//Checa se algum numero da cartela foi sorteado na rodada. Retorna 1 em caso de
+//bingo
+int ChecaCartela(tCartela* cartela, int num);
 
 //Printa as informações da cartela
 void PrintaCartela(tCartela* cartela);
