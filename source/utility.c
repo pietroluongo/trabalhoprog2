@@ -28,6 +28,7 @@ void ReadConfig(/*FILE* input*/ tConfig* cfg)
     scanf("%d;", &cfg->lin);
     scanf("%d;", &cfg->col);
     scanf("%d", &cfg->qJog);
+    cfg->bingo = 0;
 }
 
 void CopiaStr(char* A, char* B)

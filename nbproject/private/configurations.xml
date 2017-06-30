@@ -27,10 +27,15 @@
       <runprofile version="9">
         <runcommandpicklist>
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" &lt;test_1/input/test_1</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" &lt;test_1/input/jogo_config.txt</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" &lt;test_1/input/jogo_config.txt >out1</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" &lt;test_2/input/jogo_config.txt >out2</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <runcommand>"${OUTPUT_PATH}" &lt;test_2/input/jogo_config.txt >out2</runcommand>
         <rundir></rundir>
         <buildfirst>true</buildfirst>
+        <console-type>1</console-type>
         <terminal-type>0</terminal-type>
         <remove-instrumentation>0</remove-instrumentation>
         <environment>

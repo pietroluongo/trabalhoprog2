@@ -31,6 +31,8 @@ typedef struct
     int qJog;
     //Total de cartelas do jogo
     int totalCartelas;
+    //0 inicialmente, 1 quando alguém ganha
+    int bingo;
 } tConfig;
 
 int getConfSeed(tConfig* config);

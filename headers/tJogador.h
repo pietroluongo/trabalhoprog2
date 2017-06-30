@@ -24,5 +24,6 @@ void LeParticipantes(int qJog, tJogador* out, int* totalCartelas);
 int getQtdCartelasDoJogador(tJogador* jog);
 
 void getIdsCartelasDoJogador(tJogador* jog, int* ids);
+
 #endif /* UTILITY_H */
 

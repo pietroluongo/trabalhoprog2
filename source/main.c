@@ -8,8 +8,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../headers/utility.h"
-#include "../headers/tCartela.h"
-#include "../headers/tJogador.h"
 #include "../headers/bingo.h"
 /*
  * 
@@ -39,8 +37,15 @@ int main(int argc, char** argv)
     
     //Monta as cartelas dos participantes
     MontaCartelas(jogadores, cartelas, &config);
- 
+    
+    //PrintaCartelasDoJogador(cartelas, &jogadores[0], totalCartelas);
+    
+    //PrintaCartelasDoJogo(cartelas, jogadores &config);
+    //Executa o jogo de bingo
+    //printf("%s", getOwnerById(&cartelas[3], jogadores, &config).nome);
     IniciaJogo(cartelas, jogadores, &config);
+    //ChecaCartela(&cartelas[1], 18);
+    
     return (EXIT_SUCCESS);
 }
 
