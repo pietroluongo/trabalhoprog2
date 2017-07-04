@@ -20,17 +20,6 @@ void CloseFile(FILE* file)
     fclose(file);
 }
 
-void ReadConfig(/*FILE* input*/ tConfig* cfg)
-{
-    //fscanf(input, "%d;%d;%d;%d;%d", seed, qtdPedras, lin, col, qJog);
-    scanf("%d;", &cfg->seed);
-    scanf("%d;", &cfg->qtdPedras);
-    scanf("%d;", &cfg->lin);
-    scanf("%d;", &cfg->col);
-    scanf("%d", &cfg->qJog);
-    cfg->bingo = 0;
-}
-
 void CopiaStr(char* A, char* B)
 {
     int i = 0;
@@ -65,50 +54,4 @@ void OrdenaVetor(int* vet, int size)
             }
         }
     }
-}
-
-int getConfSeed(tConfig* config)
-{
-    return config->seed;
-}
-
-int getConfPedras(tConfig* config)
-{
-    return config->qtdPedras;
-}
-
-int getConfLin(tConfig* config)
-{
-    return config->lin;
-}
-
-int getConfCol(tConfig* config)
-{
-    return config->col;
-}
-
-int getConfqJog(tConfig* config)
-{
-    return config->qJog;
-}
-
-int getConfTotalCartelas(tConfig* config)
-{
-    return config->totalCartelas;
-}
-
-int setConfTotalCartelas(tConfig* config, int n)
-{
-    config->totalCartelas = n;
-}
-
-int getDig(int n)
-{
-    int count = 0;
-    while(n > 0)
-    {
-        n /= 10;
-        count++;
-    }
-    return count;
 }

@@ -28,7 +28,11 @@ tCartela InitCartela(int id, int lin, int col, int qtdPedras)
     return r;
 }
 
-int ChecaCartela(tCartela* cartela, int num)
+int GetIdC(tCartela* cartela)
+{
+    return cartela->id;
+}
+int ChecaCartelaBingo(tCartela* cartela, int num)
 {
     int i, j;
     for(i = 0; i <= cartela->col; i++)
@@ -47,9 +51,9 @@ int ChecaCartela(tCartela* cartela, int num)
     return 0;
 }
 
-void PrintaCartela(tCartela* cartela, tConfig cfg)
+void PrintaCartelaBingo(tCartela* cartela)
 {
-    printf("Cartela ID:%d\n", GetIdC(*cartela));
+    printf("Cartela ID:%d\n", GetIdC(cartela));
     int i, j;
     for(i = 0; i < cartela->lin; i++)
     {
@@ -89,53 +93,6 @@ void PrintaCartela(tCartela* cartela, tConfig cfg)
         }
         printf("\n");
     }
-    /*
-    for(i = 0; i < cartela->col-1; i++)
-    {
-        int num = cartela->numeros[i][j];
-        printf("\t|");
-        if(num < 10 && num > 0)
-        {
-            printf("00");
-            printf("%d|", cartela->numeros[i][0]);
-        }
-        else if (num >= 10 && num < 100)
-        {
-            printf("0");
-            printf("%d|", cartela->numeros[i][0]);
-        }
-        else if(num >= 100)
-        {
-            printf("%d|", cartela->numeros[i][0]);
-        }
-        else
-        {
-            printf("---|");
-        }
-        for(j = 1; j <= cartela->lin; j++)
-        {
-            int num = cartela->numeros[i][j];
-            if(num < 10 && num > 0)
-                printf("00");
-            else if(num >= 10 && num < 100)
-                printf("0");
-            else if(num >= 100)
-                printf("");
-            else
-            {
-                printf("---|");
-                continue;
-            }
-            printf("%d|", num);
-        }
-        printf("\n");
-        j = 0;
-    }*/
-}
-
-int GetIdC(tCartela cartela)
-{
-    return cartela.id;
 }
 
 int getHitsC(tCartela cartela)
@@ -143,16 +100,16 @@ int getHitsC(tCartela cartela)
     return cartela.numerosMarcados;
 }
 
-void MontaCartelas(tJogador* jogadores, tCartela* cartelas, tConfig* cfg)
+void MontaCartelasBingo(tCartela* cartelas, tJogador* jogadores,
+                        int totalCartelas, int lin, int col, int qPedras)
 {
-    int q = getConfTotalCartelas(cfg);
     int k = 0;
     int jogAtual = 0;
     int countAtual = 0;
     int i;
-    for(i = 0; i < q; i++)
+    for(i = 0; i < totalCartelas; i++)
     {
-        tCartela c = InitCartela(k, getConfLin(cfg), getConfCol(cfg), getConfPedras(cfg));
+        tCartela c = InitCartela(k, lin, col, qPedras);
         cartelas[i] = c;
         if(countAtual < jogadores[jogAtual].qtdCartelas)
         {
@@ -183,7 +140,7 @@ void GetCartelasDoJogador(tCartela* cartelasDoJogo, tCartela* destino, tJogador*
     {
         for(j = 0; j < total; j++)
         {
-            if(GetIdC(cartelasDoJogo[j]) == idsDoJogador[i])
+            if(GetIdC(&cartelasDoJogo[j]) == idsDoJogador[i])
             {
                 destino[cur] = cartelasDoJogo[j];
                 cur++;
@@ -192,35 +149,35 @@ void GetCartelasDoJogador(tCartela* cartelasDoJogo, tCartela* destino, tJogador*
     }
 }
 
-void PrintaCartelasDoJogador(tCartela* cartelas, tJogador* jogador, tConfig cfg)
+void PrintaCartelasDoJogador(tCartela* cartelas, tJogador* jogador, int totalCartelas)
 {
     printf("Jogador:%s\n", jogador->nome);
     tCartela cartela [getQtdCartelasDoJogador(jogador)];
     
-    GetCartelasDoJogador(cartelas, cartela, jogador, getConfTotalCartelas(&cfg));
+    GetCartelasDoJogador(cartelas, cartela, jogador, totalCartelas);
     int i;
     for(i = 0; i < getQtdCartelasDoJogador(jogador); i++)
     {
-        PrintaCartela(&cartela[i], cfg);
+        PrintaCartelaBingo(&cartela[i]);
         printf("\n");
     }
 }
 
-void PrintaCartelasDoJogo(tCartela* cartelas, tJogador* jogadores, tConfig* cfg)
+void PrintaCartelasBingo(tCartela* cartelas, tJogador* jogadores, int qJog, int total)
 {
     int i;
-    for(i = 0; i < getConfqJog(cfg); i++)
+    for(i = 0; i < qJog; i++)
     {
-        PrintaCartelasDoJogador(cartelas, &jogadores[i], *cfg);
+        PrintaCartelasDoJogador(cartelas, &jogadores[i], total);
         printf("\n");
     }
 }
 
-tJogador getOwnerById(tCartela* cartela, tJogador* jogadores, tConfig* cfg)
+tJogador getOwnerById(tCartela* cartela, tJogador* jogadores, int qJog)
 {
     tJogador owner;
     int i;
-    for(i = 0; i < getConfqJog(cfg); i++)
+    for(i = 0; i < qJog; i++)
     {
         int Ids[getQtdCartelasDoJogador(&jogadores[i])];
         getIdsCartelasDoJogador(&jogadores[i], Ids);

@@ -1,9 +1,9 @@
 #include "../headers/bingo.h"
 
-void IniciaJogo(tCartela* cartelas, tJogador* jogadores, tConfig* cfg)
+void RealizaJogo(tBingo* jogo)
 {
     //Reinicia o gerador para o sorteio das pedras
-    ReiniciaGerador(getConfSeed(cfg), getConfPedras(cfg));
+    ReiniciaGerador(jogo->seed, jogo->qtdPedras);
     int pedra;
     int bingo = 0;
     tJogador vencedores[10];
@@ -11,18 +11,18 @@ void IniciaJogo(tCartela* cartelas, tJogador* jogadores, tConfig* cfg)
     {
         pedra = GeraProxNumero();
         printf("Pedra:%d\n", pedra);
-        PrintaCartelasDoJogo(cartelas, jogadores, cfg);
+        PrintaCartelasBingo(jogo->cartelas, jogo->jogadores, jogo->qJog, jogo->totalCartelas);
         int i;
-        for(i = 0; i < getConfTotalCartelas(cfg); i++)
+        for(i = 0; i < jogo->totalCartelas; i++)
         {
-            if(ChecaCartela(&cartelas[i], pedra))
+            if(ChecaCartelaBingo(&jogo->cartelas[i], pedra))
             {
-                vencedores[bingo] = getOwnerById(&cartelas[i], jogadores, cfg);
+                vencedores[bingo] = getOwnerById(&jogo->cartelas[i], jogo->jogadores, jogo->qJog);
                 bingo++;
             }
         }
     }
-    PrintaCartelasDoJogo(cartelas, jogadores, cfg);
+    PrintaCartelasBingo(jogo->cartelas, jogo->jogadores, jogo->qJog, jogo->totalCartelas);
     if(bingo == 1)
     {
         printf("Jogador Venceu!\n%s\n", vencedores[0].nome);
@@ -36,4 +36,22 @@ void IniciaJogo(tCartela* cartelas, tJogador* jogadores, tConfig* cfg)
             printf("%s\n", vencedores[i].nome);
         }
     }
+}
+
+void InitGame(/*FILE* input*/ tBingo* cfg)
+{
+    FILE* input_file;
+    //fscanf(input, "%d;%d;%d;%d;%d", seed, qtdPedras, lin, col, qJog);
+    scanf("%d;", &cfg->seed);
+    scanf("%d;", &cfg->qtdPedras);
+    scanf("%d;", &cfg->lin);
+    scanf("%d;", &cfg->col);
+    scanf("%d", &cfg->qJog);
+    
+    //Lê o nome dos participantes e quantas cartelas cada um tem
+    LeParticipantes(cfg->qJog, cfg->jogadores, &cfg->totalCartelas);
+    
+    //Monta as cartelas dos participantes
+    MontaCartelasBingo(cfg->cartelas, cfg->jogadores, cfg->totalCartelas,
+                       cfg->lin, cfg->col, cfg->qtdPedras);
 }
