@@ -39,7 +39,6 @@ int main(int argc, char** argv)
     MontaCartelas(jogadores, cartelas, &config);
     
     //PrintaCartelasDoJogador(cartelas, &jogadores[0], totalCartelas);
-    
     //PrintaCartelasDoJogo(cartelas, jogadores &config);
     //Executa o jogo de bingo
     //printf("%s", getOwnerById(&cartelas[3], jogadores, &config).nome);

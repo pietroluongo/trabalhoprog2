@@ -47,11 +47,50 @@ int ChecaCartela(tCartela* cartela, int num)
     return 0;
 }
 
-void PrintaCartela(tCartela* cartela)
+void PrintaCartela(tCartela* cartela, tConfig cfg)
 {
     printf("Cartela ID:%d\n", GetIdC(*cartela));
     int i, j;
-    for(i = 0; i <= cartela->col; i++)
+    for(i = 0; i < cartela->lin; i++)
+    {
+        int num = cartela->numeros[i][0];
+        printf("\t|");
+        if(num > 0 && num < 10)
+        {
+            printf("00");
+            printf("%d|", num);
+        }
+        else if(num >= 10 && num < 100)
+        {
+            printf("0");
+            printf("%d|", num);
+        }
+        else if(num >= 100)
+            printf("%d|", num);
+        else
+            printf("---|");
+        for(j = 1; j < cartela->col; j++)
+        {
+            num = cartela->numeros[i][j];
+            if(num > 0 && num < 10)
+            {
+                printf("00");
+                printf("%d|", num);
+            }
+            else if(num >= 10 && num < 100)
+            {
+                printf("0");
+                printf("%d|", num);
+            }
+            else if(num >= 100)
+                printf("%d|", num);
+            else
+                printf("---|");
+        }
+        printf("\n");
+    }
+    /*
+    for(i = 0; i < cartela->col-1; i++)
     {
         int num = cartela->numeros[i][j];
         printf("\t|");
@@ -60,22 +99,28 @@ void PrintaCartela(tCartela* cartela)
             printf("00");
             printf("%d|", cartela->numeros[i][0]);
         }
-        else if (num >= 10)
+        else if (num >= 10 && num < 100)
         {
             printf("0");
+            printf("%d|", cartela->numeros[i][0]);
+        }
+        else if(num >= 100)
+        {
             printf("%d|", cartela->numeros[i][0]);
         }
         else
         {
             printf("---|");
         }
-        for(j = 1; j < cartela->lin-1; j++)
+        for(j = 1; j <= cartela->lin; j++)
         {
             int num = cartela->numeros[i][j];
             if(num < 10 && num > 0)
                 printf("00");
-            else if(num >= 10)
+            else if(num >= 10 && num < 100)
                 printf("0");
+            else if(num >= 100)
+                printf("");
             else
             {
                 printf("---|");
@@ -85,7 +130,7 @@ void PrintaCartela(tCartela* cartela)
         }
         printf("\n");
         j = 0;
-    }
+    }*/
 }
 
 int GetIdC(tCartela cartela)
@@ -147,16 +192,16 @@ void GetCartelasDoJogador(tCartela* cartelasDoJogo, tCartela* destino, tJogador*
     }
 }
 
-void PrintaCartelasDoJogador(tCartela* cartelas, tJogador* jogador, int total)
+void PrintaCartelasDoJogador(tCartela* cartelas, tJogador* jogador, tConfig cfg)
 {
     printf("Jogador:%s\n", jogador->nome);
     tCartela cartela [getQtdCartelasDoJogador(jogador)];
     
-    GetCartelasDoJogador(cartelas, cartela, jogador, total);
+    GetCartelasDoJogador(cartelas, cartela, jogador, getConfTotalCartelas(&cfg));
     int i;
     for(i = 0; i < getQtdCartelasDoJogador(jogador); i++)
     {
-        PrintaCartela(&cartela[i]);
+        PrintaCartela(&cartela[i], cfg);
         printf("\n");
     }
 }
@@ -166,7 +211,7 @@ void PrintaCartelasDoJogo(tCartela* cartelas, tJogador* jogadores, tConfig* cfg)
     int i;
     for(i = 0; i < getConfqJog(cfg); i++)
     {
-        PrintaCartelasDoJogador(cartelas, &jogadores[i], getConfTotalCartelas(cfg));
+        PrintaCartelasDoJogador(cartelas, &jogadores[i], *cfg);
         printf("\n");
     }
 }

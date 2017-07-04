@@ -71,5 +71,8 @@ void AppendString(char* from, char* to);
 
 void OrdenaVetor(int* vet, int size);
 
+//Retorna o número de dígitos do número
+int getDig(int n);
+
 #endif /* UTILITY_H */
 

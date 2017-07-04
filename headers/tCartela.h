@@ -27,10 +27,10 @@ tCartela initCartela(int id, int lin, int col, int qtdPedras);
 int ChecaCartela(tCartela* cartela, int num);
 
 //Printa as informações da cartela
-void PrintaCartela(tCartela* cartela);
+void PrintaCartela(tCartela* cartela, tConfig cfg);
 
 //Printa todas as cartelas de determinado jogador
-void PrintaCartelasDoJogador(tCartela* cartelas, tJogador* jogador, int total);
+void PrintaCartelasDoJogador(tCartela* cartelas, tJogador* jogador, tConfig cfg);
 
 //Salva as informações sobre todas as cartelas de dado jogador no vetor "destino"
 void GetCartelasDoJogador(tCartela* cartelasDoJogo, tCartela* destino, tJogador* jogador, int total);

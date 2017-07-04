@@ -29,11 +29,11 @@ void IniciaJogo(tCartela* cartelas, tJogador* jogadores, tConfig* cfg)
     }
     else
     {
-        printf("Jogadores Empataram!");
+        printf("Jogadores Empataram!\n");
         int i;
         for(i = 0; i < bingo; i++)
         {
-            printf("\n%s", vencedores[i].nome);
+            printf("%s\n", vencedores[i].nome);
         }
     }
 }
