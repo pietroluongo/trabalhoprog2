@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=GNU-Linux
+CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/source/bingo.o \
 	${OBJECTDIR}/source/main.o \
 	${OBJECTDIR}/source/tCartela.o \
 	${OBJECTDIR}/source/tGeradorAle.o \
@@ -60,33 +61,38 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/source/main.o: source/main.c
+${OBJECTDIR}/source/bingo.o: source/bingo.c 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/bingo.o source/bingo.c
+
+${OBJECTDIR}/source/main.o: source/main.c 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/main.o source/main.c
 
-${OBJECTDIR}/source/tCartela.o: source/tCartela.c
+${OBJECTDIR}/source/tCartela.o: source/tCartela.c 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tCartela.o source/tCartela.c
 
-${OBJECTDIR}/source/tGeradorAle.o: source/tGeradorAle.c
+${OBJECTDIR}/source/tGeradorAle.o: source/tGeradorAle.c 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tGeradorAle.o source/tGeradorAle.c
 
-${OBJECTDIR}/source/tJogador.o: source/tJogador.c
+${OBJECTDIR}/source/tJogador.o: source/tJogador.c 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tJogador.o source/tJogador.c
 
-${OBJECTDIR}/source/utility.o: source/utility.c
+${OBJECTDIR}/source/utility.o: source/utility.c 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/utility.o source/utility.c
@@ -97,6 +103,7 @@ ${OBJECTDIR}/source/utility.o: source/utility.c
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhoprog2
 
 # Subprojects
 .clean-subprojects:

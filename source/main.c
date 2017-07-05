@@ -8,68 +8,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../headers/utility.h"
-#include "../headers/tCartela.h"
-#include "../headers/tJogador.h"
+#include "../headers/bingo.h"
 
-/*
- * 
- */
 int main(int argc, char** argv)
 {
+    FILE* input;
+    FILE* out_main;
+    FILE* out_cart;
+    FILE* out_stats;
+    FILE* out_extra; 
+    //Checa os argumentos de entrada
+    ChecaArgs(argc, argv, &input);
     
-    if(!ChecaParam(argc))
-    {
-        Erro(MSG_ERRO_NO_PARAM);
-        return(EXIT_FAILURE);
-    }
-    //Conterá o caminho do arquivo de entrada
-    //c:/ etc... [100] + /input/jogo_config.txt [22] + /0 [1]
-    char configPath[123];
-    //Seta o valor da entrada
-    CopiaStr(argv[1], configPath);
-    //Adiciona o caminho do arquivo de configuração em si
-    AppendString(configPath, CONFIG_INPUT_PATH);
-    //Seed da geração de números
-    int seed;
-    //Quantidade de pedras a serem sorteadas pela banca - MAX: 900
-    int qtdPedras;
-    //Quantidade de linhas da cartela - MAX: 20
-    int lin;
-    //Quantidade de colunas da cartela - MAX: 20
-    int col;
-    //Quantidade de participantes do jogo - MAX: 20
-    int qJog;
-    //Total de cartelas do jogo
-    int totalCartelas;
+    //Abre os arquivos de saída
+    OpenFiles(&out_main, &out_cart, &out_stats, &out_extra, argv[1]);
     
-    //Referência ao arquivo de configuração
-    FILE* config;
-    //Pega a referência ao arquivo de configuração de fato
-    GetFile(argv[1], config);
-    //Se o arquivo não existir, mostrar mensagem de erro
-    if(!config)
-    {
-        Erro(MSG_ERRO_NO_CONFIG);
-        return(EXIT_FAILURE);
-    }
+    //Instância do jogo de bingo
+    tBingo jogo;
     
-    //Lê as configurações de jogo do arquivo
-    ReadConfig(&seed, &qtdPedras, &lin, &col, &qJog, config);
+    //Lê as configurações do programa para o struct
+    InitGame(&jogo, input, out_cart);
     
-    //Vetor com informações dos participantes
-    tJogador jogadores[qJog];
+    //Realiza o jogo
+    RealizaJogo(&jogo, &out_main, &out_stats, &out_extra);
     
-    //Lê o nome dos participantes e quantas cartelas cada um tem
-    LeParticipantes(qJog, config, jogadores, &totalCartelas);
-    
-    //Cria um vetor que contém todas as cartelas do jogo
-    tCartela cartelas[totalCartelas];
-    
-    //Monta as cartelas dos participantes
-    MontaCartelas(qJog, jogadores, cartelas, lin, col);
-    
-    //Fecha o arquivo
-    CloseFile(config);
+    //Fecha os arquivos de saída
+    CloseFiles(out_main, out_cart, out_stats, out_extra);
     
     return (EXIT_SUCCESS);
 }
