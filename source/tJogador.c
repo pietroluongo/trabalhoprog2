@@ -23,6 +23,11 @@ void LeParticipantes(int qJog, tJogador* out, int* totalCartelas, FILE* input)
         fscanf(input, "%*[^\n]");
         out[i] = InitJogador(nome, qCartelas, i);
         *totalCartelas += qCartelas;
+        if(feof(input))
+        {
+            PrintaErro("Final inesperado do arquivo de configuracoes.\n");
+            exit(1);
+        }
     }
 }
 
@@ -38,4 +43,14 @@ void getIdsCartelasDoJogador(tJogador* jog, int* ids)
     {
         ids[i] = jog->cartelaIds[i];
     }
+}
+
+void getName(tJogador* jog, char* out)
+{
+    out = jog->nome;
+}
+
+void setCartelaId(tJogador* jog, int index, int id)
+{
+    jog->cartelaIds[index] = id;
 }

@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
 #define MSG_ERRO_NO_PARAM "O diretorio de arquivos de configuracao nao foi informado!"
 #define MSG_ERRO_NO_CONFIG "Nao foi possivel ler o arquivo %s"
 #define CONFIG_INPUT_PATH "/input/jogo_config.txt"

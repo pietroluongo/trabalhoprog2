@@ -44,11 +44,11 @@ void InitGame(tBingo* cfg, FILE* input, FILE* out_cart)
 {
     fscanf(input, "%d;%d;%d;%d;%d", &cfg->seed, &cfg->qtdPedras, &cfg->lin,
                                     &cfg->col, &cfg->qJog);
-    /*scanf("%d;", &cfg->seed);
-    scanf("%d;", &cfg->qtdPedras);
-    scanf("%d;", &cfg->lin);
-    scanf("%d;", &cfg->col);
-    scanf("%d", &cfg->qJog);*/
+    if(cfg->qJog <= 0)
+    {
+        printf("Erro lendo numero de participantes.");
+        exit(1);
+    }
     
     //Lê o nome dos participantes e quantas cartelas cada um tem
     LeParticipantes(cfg->qJog, cfg->jogadores, &cfg->totalCartelas, input);
@@ -92,7 +92,7 @@ void ProcessBonus(tBingo* jogo, FILE** out)
         {
             if(pedras[i] == pedras[j])
             {
-                if(DesempataNomesJogs(jogs[j], jogs[i]) == 2)
+                if(DesempataNomes(jogs[j], jogs[i]) == 2)
                 {
                     int aux1 = pedras[j];
                     tJogador aux2 = jogs[j];
@@ -143,7 +143,8 @@ void ProcessStats(tBingo* jogo, FILE** out)
         {
             if(cart[i][0] == cart[j][0])
             {
-                if(DesempataNomes(jogo, cart[i][1], cart[j][1]) == 1)
+                if(DesempataNomes(getOwnerById(cart[i][1], jogo->jogadores, jogo->qJog),
+                                  getOwnerById(cart[j][1], jogo->jogadores, jogo->qJog)) == 1)
                 {
                     int aux1, aux2;
                     aux1 = cart[i][0];
@@ -187,7 +188,7 @@ void ProcessStats(tBingo* jogo, FILE** out)
     }
 }
 
-int DesempataNomesJogs(tJogador jA, tJogador jB)
+int DesempataNomes(tJogador jA, tJogador jB)
 {
     if(jA.id == jB.id)
         return 0;
@@ -203,7 +204,7 @@ int DesempataNomesJogs(tJogador jA, tJogador jB)
     }
     return 0;
 }
-
+/*
 //Retorna 1 caso o idA tenha um nome "menor" e 2 caso o idB tenha um nome "menor"
 int DesempataNomes(tBingo* jogo, int idA, int idB)
 {
@@ -226,4 +227,4 @@ int DesempataNomes(tBingo* jogo, int idA, int idB)
             continue;
     }
     return 0;
-}
+}*/

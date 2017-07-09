@@ -45,9 +45,9 @@ void ProcessStats(tBingo* jogo, FILE** out);
 //Faz o processamento da função bônus
 void ProcessBonus(tBingo* jogo, FILE** out);
 
-int DesempataNomes(tBingo* jogo, int idA, int idB);
+int DesempataNomes(tJogador jA, tJogador jB);
 
-int DesempataNomesJogs(tJogador jA, tJogador jB);
+//int DesempataNomesJogs(tJogador jA, tJogador jB);
 
 #endif /* BINGO_H */
 

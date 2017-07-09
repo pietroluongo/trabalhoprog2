@@ -13,7 +13,7 @@ int ChecaArgs(int argCount, char** argVal, FILE** input)
     *input = fopen(PATH_IN, "r");
     if(!input)
     {
-        printf("ERRO: Nao foi possivel abrir o arquivo: %s\n", PATH_IN);
+        printf("\nERRO: Nao foi possivel abrir o arquivo: %s\n", PATH_IN);
         exit(1);
     }
     printf("Aberto.\n");
@@ -21,7 +21,7 @@ int ChecaArgs(int argCount, char** argVal, FILE** input)
 
 void PrintaErro(char* msg)
 {
-    printf("Erro: %s", msg);
+    printf("ERRO: %s", msg);
 }
 
 void CopiaStr(char* A, char* B)
@@ -62,18 +62,28 @@ void OrdenaVetor(int* vet, int size)
 
 void OpenFiles(FILE** main, FILE** carts, FILE** stats, FILE** extra, char* str)
 {
+    char PATH_OUT[1050];
+    sprintf(PATH_OUT, "%s/output", str);
+    mkdir(PATH_OUT, S_IRWXU);
     char PATH_OUT_MAIN[1050];
     char PATH_OUT_CART[1050];
     char PATH_OUT_STATS[1050];
     char PATH_OUT_EXTRA[1050];
-    sprintf(PATH_OUT_MAIN, "%s/DEVoutput/saida.txt", str);
-    sprintf(PATH_OUT_CART, "%s/DEVoutput/cartelas_jogador.txt", str);
-    sprintf(PATH_OUT_STATS, "%s/DEVoutput/estatisticas_jogo.txt", str);
-    sprintf(PATH_OUT_EXTRA, "%s/DEVoutput/bonus.txt", str);
+    sprintf(PATH_OUT_MAIN, "%s/output/saida.txt", str);
+    sprintf(PATH_OUT_CART, "%s/output/cartelas_jogador.txt", str);
+    sprintf(PATH_OUT_STATS, "%s/output/estatisticas_jogo.txt", str);
+    sprintf(PATH_OUT_EXTRA, "%s/output/bonus.txt", str);
     *main = fopen(PATH_OUT_MAIN, "w");
     *carts = fopen(PATH_OUT_CART, "w");
     *stats = fopen(PATH_OUT_STATS, "w");
     *extra = fopen(PATH_OUT_EXTRA, "w");
+    if(!*main || !*carts || !*stats || !*extra)
+    {
+        printf("ERRO: Nao foi possivel criar os arquivos de saída.");
+        printf("\nCertifique-se de que a pasta %s existe e que", PATH_OUT);
+        printf(" o usuario atual possui permissao para escrever nela.\n");
+        exit(1);
+    }
 }
 
 void CloseFiles(FILE* main, FILE* carts, FILE* stats, FILE* extra)

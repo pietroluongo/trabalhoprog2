@@ -12,11 +12,13 @@
 
 int main(int argc, char** argv)
 {
+    //Cria os ponteiros para os arquivos que serão utilizados no programa
     FILE* input;
     FILE* out_main;
     FILE* out_cart;
     FILE* out_stats;
-    FILE* out_extra; 
+    FILE* out_extra;
+    
     //Checa os argumentos de entrada
     ChecaArgs(argc, argv, &input);
     

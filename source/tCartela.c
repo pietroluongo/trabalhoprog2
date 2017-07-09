@@ -115,16 +115,17 @@ void MontaCartelasBingo(tCartela* cartelas, tJogador* jogadores,
     {
         tCartela c = InitCartelaBingo(k, lin, col, qPedras);
         cartelas[i] = c;
-        if(countAtual < jogadores[jogAtual].qtdCartelas)
+        if(countAtual < getQtdCartelasDoJogador(jogadores[jogAtual]))
         {
-            jogadores[jogAtual].cartelaIds[countAtual] = k;
+            setCartelaId(&jogadores[jogAtual], countAtual, k);
             countAtual++;
         }
         else
         {
             jogAtual++;
             countAtual = 0;
-            jogadores[jogAtual].cartelaIds[countAtual] = k;
+            //jogadores[jogAtual].cartelaIds[countAtual] = k;
+            setCartelaId(&jogadores[jogAtual], countAtual, k);
             countAtual++;
         }
         k++;
@@ -155,7 +156,9 @@ void GetCartelasDoJogador(tCartela* cartelasDoJogo, tCartela* destino, tJogador*
 
 void PrintaCartelasDoJogador(tCartela* cartelas, tJogador* jogador, int totalCartelas, FILE* out)
 {
-    fprintf(out, "Jogador:%s\n", jogador->nome);
+    char nome[99];
+    getName(jogador, nome);
+    fprintf(out, "Jogador:%s\n", nome);
     tCartela cartela [getQtdCartelasDoJogador(jogador)];
     
     GetCartelasDoJogador(cartelas, cartela, jogador, totalCartelas);
@@ -224,7 +227,7 @@ int getPiorCartelaQtd(tCartela* cartelas, int totalCartelas, int qPedras, tJogad
     getIdsCartelasDoJogador(&jogador, ids);
     int i;
     int menor = qPedras;
-    for(i = 0; i < jogador.qtdCartelas; i++)
+    for(i = 0; i < getQtdCartelasDoJogador(&jogador); i++)
     {
         if(getCartelaById(ids[i], totalCartelas, cartelas).numerosMarcados < menor)
             menor = getCartelaById(ids[i], totalCartelas, cartelas).numerosMarcados;
