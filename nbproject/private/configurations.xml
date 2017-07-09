@@ -13,8 +13,6 @@
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
-        <gdb_signals>
-        </gdb_signals>
         <gdb_options>
           <DebugOptions>
           </DebugOptions>
@@ -35,8 +33,9 @@
           <runcommandpicklistitem>sudo "${OUTPUT_PATH}" /home/gabriel/trabalhoprog2/test_1</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" /home/gabriel/trabalhoprog2/test_1</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" /home/gabriel/trabalhoprog2/test_2</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" /home/gabriel/trabalhoprog2/test_3</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}" /home/gabriel/trabalhoprog2/test_2</runcommand>
+        <runcommand>"${OUTPUT_PATH}" /home/gabriel/trabalhoprog2/test_3</runcommand>
         <rundir></rundir>
         <buildfirst>true</buildfirst>
         <console-type>1</console-type>

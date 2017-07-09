@@ -21,7 +21,7 @@ typedef struct
     int id;
     int lin;
     int col;
-    int numeros[20][20];
+    int numeros[21][21];
     int numerosMarcados;
 } tCartela;
 

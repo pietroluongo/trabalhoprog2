@@ -40,10 +40,10 @@ int ChecaCartelaBingo(tCartela* cartela, int num)
     {
         for(j = 0; j <= cartela->lin; j++)
         {
-            if(cartela->numeros[i][j] == num)
+            if(cartela->numeros[j][i] == num)
             {
                 cartela->numerosMarcados++;
-                cartela->numeros[i][j] = -1;
+                cartela->numeros[j][i] = -1;
             }
         }
     }
