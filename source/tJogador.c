@@ -23,7 +23,7 @@ void LeParticipantes(int qJog, tJogador* out, int* totalCartelas, FILE* input)
         fscanf(input, "%*[^\n]");
         out[i] = InitJogador(nome, qCartelas, i);
         *totalCartelas += qCartelas;
-        if(feof(input))
+        if(feof(input) && i != qJog-1)
         {
             PrintaErro("Final inesperado do arquivo de configuracoes.\n");
             exit(1);
