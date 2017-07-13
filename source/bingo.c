@@ -10,7 +10,8 @@ void RealizaJogo(tBingo* jogo, FILE** output, FILE** out_stats, FILE** out_extra
     while(!bingo)
     {
         pedra = GeraProxNumero();
-        fprintf(*output, "Pedra:%d\n", pedra);
+        //fprintf(*output, "Pedra:%d\n", pedra);
+        printf("Pedra:%d\n", pedra);
         PrintaCartelasBingo(jogo->cartelas, jogo->jogadores, jogo->qJog, jogo->totalCartelas, *output);
         int i;
         for(i = 0; i < jogo->totalCartelas; i++)
@@ -26,14 +27,16 @@ void RealizaJogo(tBingo* jogo, FILE** output, FILE** out_stats, FILE** out_extra
     if(bingo == 1)
     {
         fprintf(*output, "Jogador Venceu!\n%s\n", vencedores[0].nome);
+        printf("Jogador Venceu!\n%s\n", vencedores[0].nome);
     }
     else
     {
         fprintf(*output, "Jogadores Empataram!\n");
+        printf("Jogadores Empataram!\n");
         int i;
         for(i = 0; i < bingo; i++)
         {
-            fprintf(*output, "%s\n", vencedores[i].nome);
+            printf("%s\n", vencedores[i].nome);
         }
     }
     ProcessStats(jogo, out_stats);

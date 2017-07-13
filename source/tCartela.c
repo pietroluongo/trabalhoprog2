@@ -18,9 +18,9 @@ tCartela InitCartelaBingo(int id, int lin, int col, int qtdPedras)
     r.numerosMarcados = 0;
     memset(r.numeros, 0, sizeof r.numeros);
     int j, n = 0;
-    for(i = 0; i < lin; i++)
+    for(i = 0; i < col; i++)
     {
-        for(j = 0; j < col; j++)
+        for(j = 0; j < lin; j++)
         {
             r.numeros[j][i] = nums[n];
             n++;
@@ -62,40 +62,40 @@ void PrintaCartelaBingo(tCartela* cartela, FILE* out)
     for(i = 0; i < cartela->lin; i++)
     {
         int num = cartela->numeros[i][0];
-        fprintf(out, "\t|");
+        printf("\t|");
         if(num > 0 && num < 10)
         {
-            fprintf(out, "00");
-            fprintf(out, "%d|", num);
+            printf("00");
+            printf("%d|", num);
         }
         else if(num >= 10 && num < 100)
         {
-            fprintf(out, "0");
-            fprintf(out, "%d|", num);
+            printf("0");
+            printf("%d|", num);
         }
         else if(num >= 100)
-            fprintf(out, "%d|", num);
+            printf("%d|", num);
         else
-            fprintf(out, "---|");
+            printf("---|");
         for(j = 1; j < cartela->col; j++)
         {
             num = cartela->numeros[i][j];
             if(num > 0 && num < 10)
             {
-                fprintf(out, "00");
-                fprintf(out, "%d|", num);
+                printf("00");
+                printf("%d|", num);
             }
             else if(num >= 10 && num < 100)
             {
-                fprintf(out, "0");
-                fprintf(out, "%d|", num);
+                printf("0");
+                printf("%d|", num);
             }
             else if(num >= 100)
-                fprintf(out, "%d|", num);
+                printf("%d|", num);
             else
-                fprintf(out, "---|");
+                printf("---|");
         }
-        fprintf(out,"\n");
+        printf("\n");
     }
 }
 
